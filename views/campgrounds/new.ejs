@@ -1,27 +1,82 @@
 <% include ../partials/header %>
-<div class="container">
+
+<div class="container mt-4">
     <div class="row">
-        <h1 style="text-align: center">Create a New Campground</h1>
-        <div style="width: 30%; margin: 25px auto;">
-            <form action="/campgrounds" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="name" placeholder="name">
+        <div class="col-12 col-md-12 col-lg-9" style="margin: 0 auto;">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <h1 class="text-center">Add New Campground</h1>
+                    <p>
+                        <small class="text-muted">Fields marked * are required.</small>
+                      </p>
+                    <div>
+                        <form action="/campgrounds" method="POST" class="needs-validation" novalidate>
+                            <div class="form-group">
+                                <label for="name">Name*</label>
+                                <input class="form-control" type="text" name="name" placeholder="Name" required>
+                                <div class="invalid-feedback">
+                                    Please provide a name.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Image*</label>
+                                <input class="form-control" type="text" name="image" placeholder="Image URL" required>
+                                <div class="invalid-feedback">
+                                    Please provide a image.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Price/Night*</label>
+                                <input class="form-control" type="text" name="price" placeholder="Price" required>
+                                <div class="invalid-feedback">
+                                    Please provide a price.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description*</label>
+                                <textarea id="description" class="form-control" type="text" name="description" rows="3" required></textarea>
+                                <div class="invalid-feedback">
+                                    Please provide a description of the campground.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location*</label>
+                                <input type="text" name="location" id="location" class="form-control" placeholder="Yosemite National Park, CA" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid location.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact">Phone Number*</label>
+                                <input id="contact" type="text" class="form-control" name="contact" placeholder="123-456-7891" required>
+                                <div class="invalid-feedback">
+                                    Please provide a phone number.
+                                </div>
+                            </div>
+                            <label for="">Booking Window *</label>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="bFrom" class="form-control" placeholder="Starting Month" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a booking window.
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="bTo" class="form-control" placeholder="Ending Month" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-block">Submit</button>
+                            </div>
+                        </form>
+                        <a href="/campgrounds">Go Back</a>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="image" placeholder="image url">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="price" placeholder="price">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="description" placeholder="description">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-                </div>
-            </form>
-            <a href="/campgrounds">Go Back</a>
+                
+            </div>
+            
         </div>
+        
     </div>
 </div>
 <% include ../partials/footer %>

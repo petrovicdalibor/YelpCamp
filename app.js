@@ -5,7 +5,8 @@ var express = require("express"),
     mongoose = require("mongoose"),
     flash = require("connect-flash"),
     passport = require("passport"),
-    LocalStrategy = require('passport-local'),
+    moment = require("moment"),
+    LocalStrategy = require("passport-local"),
     User = require("./models/User"),
     seedDB = require("./seeds");
 
@@ -19,7 +20,7 @@ mongoose.connect("mongodb+srv://userapi:daci123@cluster0.pjyyx.azure.mongodb.net
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
-app.use(methodOverride('_method'));
+app.use(methodOverride("_method"));
 app.use(flash());
 //seedDB(); // seed the database
 

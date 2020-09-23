@@ -17,7 +17,14 @@ var campgroundSchema = new mongoose.Schema({
          ref: "Comment"
       }
    ],
-   price: String
+   bFrom: String,
+   bTo: String,
+   contact: String,
+   price: String,
+   location: String,
+   createdAt: {
+      type: Date, default: Date.now
+   }
 });
 
 module.exports = mongoose.model("Campground", campgroundSchema);

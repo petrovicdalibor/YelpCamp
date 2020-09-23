@@ -1,3 +1,5 @@
+const moment = require("moment");
+
 let express = require("express"),
     router = express.Router(),
     Campground = require("../models/campground"),
@@ -26,14 +28,18 @@ router.post("/", function (req, res) {
   var userId = req.user._id;
   var username = req.user.username;
   var newCampground = {
-      name: name,
-      image: image,
-      price: price,
-      description: desc,
-      author: {
-          id: userId,
-          username: username
-      }
+        name: name,
+        image: image,
+        price: price,
+        description: desc,
+        author: {
+            id: userId,
+            username: username
+        },
+        bFrom: req.body.bFrom,
+        bTo: req.body.bTo,
+        contact: req.body.contact,
+        location: req.body.location
     }
   // Create a new campground and save to DB
   Campground.create(newCampground, function (err, newlyCreated) {
@@ -64,7 +70,11 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req, res) {
         name: req.body.name,
         image: req.body.image,
         price: req.body.price,
-        description: req.body.description
+        description: req.body.description,
+        bFrom: req.body.bFrom,
+        bTo: req.body.bTo,
+        contact: req.body.contact,
+        location: req.body.location
      }, function(err, camp) {
              res.redirect("/campgrounds/" + req.params.id);
     });
@@ -87,7 +97,7 @@ router.get("/:id", function (req, res) {
       } else {
           //console.log(foundCampground)
           //render show template with that campground
-          res.render("campgrounds/show", { campground: foundCampground });
+          res.render("campgrounds/show", { campground: foundCampground, moment: moment });
         }
   });
 });
