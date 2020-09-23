@@ -15,7 +15,7 @@ let commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     authRoutes = require("./routes/index");
 
-mongoose.connect("mongodb+srv://userapi:daci123@cluster0.pjyyx.azure.mongodb.net/v5?retryWrites=true&w=majority",
+mongoose.connect("DB_URI",
     { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
